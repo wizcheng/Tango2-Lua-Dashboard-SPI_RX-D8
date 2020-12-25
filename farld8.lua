@@ -44,6 +44,11 @@ local link_quality = 0
 local lastMessage = "None"
 local lastNumberMessage = "0"
 
+local quadVoltageAttribute = 'VFAS'
+local quadVoltageDisplayMax = 4.2
+local qualVoltageDisplayMin = 3.7
+local quadVoltageDisplayMin = 3.2
+
 ------- HELPERS -------
 -- Helper converts voltage to percentage of voltage for a sexy battery percent
 local function convertVoltageToPercentage(voltage)
@@ -353,19 +358,9 @@ local function drawlink_quality(start_x, start_y)
 
 end
 
-local function getQuadVoltage()
-  local voltage = getValue('Cels')
-  if voltage == nil then 
-    voltage = '4.4V'
-  else 
-    voltage = string.sub(voltage, 1, -2)
-  end
-  return voltage
-end
-
 local function drawVoltageText(start_x, start_y)
   -- First, try to get voltage from VFAS...
-  local voltage = getValue('VFAS')
+  local voltage = getValue(quadVoltageAttribute)
   -- local voltage = getValue('RxBt')
   -- local voltage = getValue('Cels')   -- For miniwhoop seems more accurate
   -- local voltage = getQuadVoltage()
@@ -437,19 +432,17 @@ local function drawVoltageImage(start_x, start_y)
   lcd.drawLine(start_x + batteryWidth - math.ceil(batteryWidth / 4), start_y + 44, start_x + batteryWidth - 1, start_y + 44, SOLID, 0)
 
   -- Voltage top
-  lcd.drawText(start_x + batteryWidth + 4, start_y + 0, "4.2v", SMLSIZE)
+  lcd.drawText(start_x + batteryWidth + 4, start_y + 0, qualVoltageDisplayMax .. "v", SMLSIZE)
   -- Voltage middle
-  lcd.drawText(start_x + batteryWidth + 4, start_y + 24, "3.9v", SMLSIZE)
+  lcd.drawText(start_x + batteryWidth + 4, start_y + 24, qualVoltageDisplayMid .. "v", SMLSIZE)
   -- Voltage bottom
-  lcd.drawText(start_x + batteryWidth + 4, start_y + 47, "3.7v", SMLSIZE)
+  lcd.drawText(start_x + batteryWidth + 4, start_y + 47, qualVoltageDisplayMin .. "v", SMLSIZE)
 
   -- Now draw how full our voltage is...
-  local voltage = getValue('VFAS')
+  local voltage = getValue(quadVoltageAttribute)
   -- local voltage = getValue('RxBt')
-  -- local voltage = getValue('Cels')
-  -- local voltage = getQuadVoltage()
-  voltageLow = 3.8
-  voltageHigh = 4.20
+  voltageLow = qualVoltageDisplayMin
+  voltageHigh = qualVoltageDisplayMax
   voltageIncrement = ((voltageHigh - voltageLow) / 47)
 
   local offset = 0  -- Start from the bottom up
