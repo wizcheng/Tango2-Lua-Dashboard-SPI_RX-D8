@@ -351,10 +351,16 @@ local function drawlink_quality(start_x, start_y)
 
 end
 
+local function getQuadVoltage()
+  local s = getValue('Cels')
+  return s:gsub("%V", "")
+end
+
 local function drawVoltageText(start_x, start_y)
   -- First, try to get voltage from VFAS...
   -- local voltage = getValue('RxBt')
-  local voltage = getValue('Cels')   -- For miniwhoop seems more accurate
+  -- local voltage = getValue('Cels')   -- For miniwhoop seems more accurate
+  local voltage = getQuadVoltage()
   -- TODO: if that failed, get voltage from somewhere else from my bigger quads?  Or rebind the voltage to VFAS?
 
   if tonumber(voltage) >= 10 then
@@ -431,7 +437,8 @@ local function drawVoltageImage(start_x, start_y)
 
   -- Now draw how full our voltage is...
   -- local voltage = getValue('RxBt')
-  local voltage = getValue('Cels')
+  -- local voltage = getValue('Cels')
+  local voltage = getQuadVoltage()
   voltageLow = 3.8
   voltageHigh = 4.20
   voltageIncrement = ((voltageHigh - voltageLow) / 47)
