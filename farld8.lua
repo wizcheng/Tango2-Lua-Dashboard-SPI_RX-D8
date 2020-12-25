@@ -365,7 +365,8 @@ end
 
 local function drawVoltageText(start_x, start_y)
   -- First, try to get voltage from VFAS...
-  local voltage = getValue('RxBt')
+  local voltage = getValue('VFAS')
+  -- local voltage = getValue('RxBt')
   -- local voltage = getValue('Cels')   -- For miniwhoop seems more accurate
   -- local voltage = getQuadVoltage()
   -- TODO: if that failed, get voltage from somewhere else from my bigger quads?  Or rebind the voltage to VFAS?
@@ -443,7 +444,8 @@ local function drawVoltageImage(start_x, start_y)
   lcd.drawText(start_x + batteryWidth + 4, start_y + 47, "3.7v", SMLSIZE)
 
   -- Now draw how full our voltage is...
-  local voltage = getValue('RxBt')
+  local voltage = getValue('VFAS')
+  -- local voltage = getValue('RxBt')
   -- local voltage = getValue('Cels')
   -- local voltage = getQuadVoltage()
   voltageLow = 3.8
