@@ -353,7 +353,12 @@ end
 
 local function getQuadVoltage()
   local s = getValue('Cels')
-  return s:gsub("%V", "")
+  if s == nil then 
+    s = '4.4V'
+  else 
+    s = s:gsub("%V", "")
+  end
+  return s
 end
 
 local function drawVoltageText(start_x, start_y)
