@@ -18,6 +18,8 @@ local displayPowerOutput = false
 -- Will be displayed only if displayGPS, Quad locator and PowerOuput are set to false
 local displayFillingText = true
 
+local displayRssi = false
+
 ------- GLOBALS -------
 -- The model name when it can't detect a model name  from the handset
 local modelName = "Unknown"
@@ -608,7 +610,7 @@ local function run(event)
       drawPower(84,65, output_power)
     end
     if(displayRssi == false and displayPowerOutput == false and displayFillingText == true) then
-      lcd.drawText(8,70, "Team Blacksheep", MIDSIZE)
+      lcd.drawText(8,70, type(getValue('Cels')), MIDSIZE)
     end
   else
     drawGPS(3, 65, coords)
