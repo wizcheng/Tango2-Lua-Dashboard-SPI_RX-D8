@@ -352,13 +352,13 @@ local function drawlink_quality(start_x, start_y)
 end
 
 local function getQuadVoltage()
-  local s = getValue('Cels')
-  if s == nil then 
-    s = '4.4V'
+  local voltage = getValue('Cels')
+  if voltage == nil then 
+    voltage = '4.4V'
   else 
-    s = s:gsub("%V", "")
+    voltage = string.sub(s, 1, -2)
   end
-  return s
+  return voltage
 end
 
 local function drawVoltageText(start_x, start_y)
