@@ -46,7 +46,7 @@ local lastNumberMessage = "0"
 
 local quadVoltageAttribute = 'VFAS'
 local quadVoltageDisplayMax = 4.2
-local qualVoltageDisplayMid = 3.7
+local quadVoltageDisplayMid = 3.7
 local quadVoltageDisplayMin = 3.2
 
 ------- HELPERS -------
