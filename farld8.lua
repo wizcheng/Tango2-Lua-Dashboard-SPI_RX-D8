@@ -46,7 +46,7 @@ local lastNumberMessage = "0"
 
 local quadVoltageAttribute = 'VFAS'
 local quadVoltageDisplayMax = 4.2
-local qualVoltageDisplayMin = 3.7
+local qualVoltageDisplayMid = 3.7
 local quadVoltageDisplayMin = 3.2
 
 ------- HELPERS -------
@@ -432,17 +432,17 @@ local function drawVoltageImage(start_x, start_y)
   lcd.drawLine(start_x + batteryWidth - math.ceil(batteryWidth / 4), start_y + 44, start_x + batteryWidth - 1, start_y + 44, SOLID, 0)
 
   -- Voltage top
-  lcd.drawText(start_x + batteryWidth + 4, start_y + 0, qualVoltageDisplayMax .. "v", SMLSIZE)
+  lcd.drawText(start_x + batteryWidth + 4, start_y + 0, quadVoltageDisplayMax .. "v", SMLSIZE)
   -- Voltage middle
-  lcd.drawText(start_x + batteryWidth + 4, start_y + 24, qualVoltageDisplayMid .. "v", SMLSIZE)
+  lcd.drawText(start_x + batteryWidth + 4, start_y + 24, quadVoltageDisplayMid .. "v", SMLSIZE)
   -- Voltage bottom
-  lcd.drawText(start_x + batteryWidth + 4, start_y + 47, qualVoltageDisplayMin .. "v", SMLSIZE)
+  lcd.drawText(start_x + batteryWidth + 4, start_y + 47, quadVoltageDisplayMin .. "v", SMLSIZE)
 
   -- Now draw how full our voltage is...
   local voltage = getValue(quadVoltageAttribute)
   -- local voltage = getValue('RxBt')
-  voltageLow = qualVoltageDisplayMin
-  voltageHigh = qualVoltageDisplayMax
+  voltageLow = quadVoltageDisplayMin
+  voltageHigh = quadVoltageDisplayMax
   voltageIncrement = ((voltageHigh - voltageLow) / 47)
 
   local offset = 0  -- Start from the bottom up
