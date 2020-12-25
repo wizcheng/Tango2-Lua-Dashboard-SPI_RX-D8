@@ -44,10 +44,10 @@ local link_quality = 0
 local lastMessage = "None"
 local lastNumberMessage = "0"
 
-local quadVoltageAttribute = 'VFAS'
+local quadVoltageAttribute = 'A1'
 local quadVoltageDisplayMax = 4.2
-local quadVoltageDisplayMid = 3.7
-local quadVoltageDisplayMin = 3.2
+local quadVoltageDisplayMid = 3.6
+local quadVoltageDisplayMin = 3.0
 
 ------- HELPERS -------
 -- Helper converts voltage to percentage of voltage for a sexy battery percent
