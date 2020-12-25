@@ -12,8 +12,8 @@
 local displayGPS = false
 
 -- Drone locator & Power ouput
-local displayQuadLocator = true
-local displayPowerOutput = true
+local displayQuadLocator = false
+local displayPowerOutput = false
 
 -- Will be displayed only if displayGPS, Quad locator and PowerOuput are set to false
 local displayFillingText = true
@@ -363,9 +363,9 @@ end
 
 local function drawVoltageText(start_x, start_y)
   -- First, try to get voltage from VFAS...
-  -- local voltage = getValue('RxBt')
+  local voltage = getValue('RxBt')
   -- local voltage = getValue('Cels')   -- For miniwhoop seems more accurate
-  local voltage = getQuadVoltage()
+  -- local voltage = getQuadVoltage()
   -- TODO: if that failed, get voltage from somewhere else from my bigger quads?  Or rebind the voltage to VFAS?
 
   if tonumber(voltage) >= 10 then
@@ -441,9 +441,9 @@ local function drawVoltageImage(start_x, start_y)
   lcd.drawText(start_x + batteryWidth + 4, start_y + 47, "3.7v", SMLSIZE)
 
   -- Now draw how full our voltage is...
-  -- local voltage = getValue('RxBt')
+  local voltage = getValue('RxBt')
   -- local voltage = getValue('Cels')
-  local voltage = getQuadVoltage()
+  -- local voltage = getQuadVoltage()
   voltageLow = 3.8
   voltageHigh = 4.20
   voltageIncrement = ((voltageHigh - voltageLow) / 47)
