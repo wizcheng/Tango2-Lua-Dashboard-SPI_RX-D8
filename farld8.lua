@@ -356,7 +356,7 @@ local function getQuadVoltage()
   if voltage == nil then 
     voltage = '4.4V'
   else 
-    voltage = string.sub(s, 1, -2)
+    voltage = string.sub(voltage, 1, -2)
   end
   return voltage
 end
