@@ -608,7 +608,7 @@ local function run(event)
       drawPower(84,65, output_power)
     end
     if(displayRssi == false and displayPowerOutput == false and displayFillingText == true) then
-      lcd.drawText(8,70, type(getFlightMode()), MIDSIZE)
+      lcd.drawText(8,70, "mode "..getFlightMode(), MIDSIZE)
     end
   else
     drawGPS(3, 65, coords)
