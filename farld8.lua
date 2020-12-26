@@ -46,8 +46,8 @@ local lastNumberMessage = "0"
 
 local quadVoltageAttribute = 'A1'
 local quadVoltageDisplayMax = 4.2
-local quadVoltageDisplayMid = 3.6
-local quadVoltageDisplayMin = 3.0
+local quadVoltageDisplayMin = 3.2
+
 
 ------- HELPERS -------
 -- Helper converts voltage to percentage of voltage for a sexy battery percent
@@ -408,6 +408,7 @@ local function drawVoltageImage(start_x, start_y)
 
   -- Define the battery width (so we can adjust it later)
   local batteryWidth = 12
+  local quadVoltageDisplayMid = (quadVoltageDisplayMin + quadVoltageDisplayMax ) / 2
 
   -- Draw our battery outline
   lcd.drawLine(start_x + 2, start_y + 1, start_x + batteryWidth - 2, start_y + 1, SOLID, 0)
