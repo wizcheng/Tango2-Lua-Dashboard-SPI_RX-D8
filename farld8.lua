@@ -559,6 +559,7 @@ local function run(event)
   setAnimationIncrement()
 
   -- Check if we just armed...
+  armd = tonumber(getValue('SA'))
   if armed > 512 then
     isArmed = 1
   elseif armed < 512 and isArmed == 1 then
