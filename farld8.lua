@@ -44,6 +44,7 @@ local link_quality = 0
 local lastMessage = "None"
 local lastNumberMessage = "0"
 
+local armSwitch = 'sa'
 local quadVoltageAttribute = 'A1'
 local quadVoltageDisplayMax = 4.2
 local quadVoltageDisplayMin = 3.2
@@ -559,7 +560,7 @@ local function run(event)
   setAnimationIncrement()
 
   -- Check if we just armed...
-  armed = tonumber(getValue('SA'))
+  armed = tonumber(getValue(armSwitch))
   if armed > 512 then
     isArmed = 1
   elseif armed < 512 and isArmed == 1 then
@@ -607,7 +608,7 @@ local function run(event)
       drawPower(84,65, output_power)
     end
     if(displayRssi == false and displayPowerOutput == false and displayFillingText == true) then
-      lcd.drawText(8,70, "arm "..getValue('SA'), MIDSIZE)
+      lcd.drawText(8,70, "arm "..getValue(armSwitch), MIDSIZE)
     end
   else
     drawGPS(3, 65, coords)
